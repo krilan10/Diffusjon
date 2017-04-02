@@ -75,7 +75,7 @@ public class Location {
 
     public void moveX(boolean moveRight) {
 
-        if (moveRight&&getCol()<120) {
+        if (moveRight&&getCol()<119) {
             col++;
           
         } else if (col > 1&& getCol()>0) {
@@ -86,7 +86,7 @@ public class Location {
     }
        public void moveY(boolean moveUp) {
            
-        if (moveUp &&getRow()<120){
+        if (moveUp &&getRow()<119){
             row++;
            
         } else if (col > 1&&getRow()>0) {

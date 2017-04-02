@@ -14,7 +14,8 @@ public class main {
     
     //Velg dimensjon til simuleringen 1D eller 2D
     
-        static int dimension=2;
+        static int dimension=1;
+        static int steps=1000;
         
         
        public static void main(String[] args) {
@@ -26,6 +27,6 @@ public class main {
         
         // Simulerer (antall Steg, Antall dimesjoner)
         // NB! bare implementert 1D og 2D
-        s.simulate(4000,1);
+        s.simulate(steps);
     }
 }

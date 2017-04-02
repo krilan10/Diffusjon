@@ -58,7 +58,7 @@ public class Simulator {
 
     }
 
-    public void simulate(int numSteps, int dimensions) {
+    public void simulate(int numSteps) {
         for (int step = 1; step <= numSteps; /*&& view.isViable(field);*/ step++) {
             simulateStep();
         }
