@@ -12,7 +12,8 @@ package diffusjon;
 
 public class main {
     
-    //Setter dimensjonen for simulering til 1D
+    //Velg dimensjon til simuleringen 1D eller 2D
+    
         static int dimension=2;
         
         
@@ -24,7 +25,7 @@ public class main {
         
         
         // Simulerer (antall Steg, Antall dimesjoner)
-        // NB! bare implementert 1D
+        // NB! bare implementert 1D og 2D
         s.simulate(4000,1);
     }
 }
