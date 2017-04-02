@@ -13,16 +13,19 @@ package diffusjon;
 public class main {
     
     //Velg dimensjon til simuleringen 1D eller 2D
+    //Antall Steg
+    //antall parikler som skal være i simuleringen
     
-        static int dimension=1;
+        static int dimension=2;
         static int steps=1000;
+        static int amountOfParticles=3000;
         
         
        public static void main(String[] args) {
        
            
            
-        Simulator s=new Simulator(dimension);
+        Simulator s=new Simulator(dimension,amountOfParticles);
         
         
         // Simulerer (antall Steg, Antall dimesjoner)

@@ -17,15 +17,17 @@ public class Simulator {
     // A graphical view of the simulation.
     private SimulatorView view;
     private Particle p;
+    private static int amount;
+
     private int step;
     private int dimension;
 
-    public Simulator(int dimension) {
-        this(dimension,DEFAULT_DEPTH, DEFAULT_WIDTH);
+    public Simulator(int dimension,int amount) {
+        this(dimension,amount, DEFAULT_DEPTH, DEFAULT_WIDTH);
 
     }
 
-    public Simulator(int dimension,int width, int depth) {
+    public Simulator(int dimension, int amount, int width, int depth) {
         if (width <= 0 || depth <= 0) {
             System.out.println("The dimensions must be greater than zero.");
             System.out.println("Using default values.");
@@ -35,7 +37,8 @@ public class Simulator {
             field = new Field(depth, width);
             view = new SimulatorView(depth, width);
             view.setColor(Particle.class, Color.RED);
-            this.dimension=dimension;
+            this.dimension = dimension;
+            this.amount=amount;
         }
 
         particles = new ArrayList<Particle>();
@@ -46,12 +49,11 @@ public class Simulator {
 
     public void simulateStep() {
         step++;
-        
 
         for (Particle p : particles) {
             field.clear(p.getLocation());
             p.move(dimension);
-               System.out.println("X: " + p.getLocation().getRow() + "   Y: " + p.getLocation().getCol());
+            System.out.println("X: " + p.getLocation().getRow() + "   Y: " + p.getLocation().getCol());
         }
 
         view.showStatus(step, field);
@@ -64,15 +66,21 @@ public class Simulator {
         }
     }
 
-    public void populate() {
-        p = new Particle(this.field, new Location(60, 60));
-        particles.add(p);
+    public void populate(int amount) {
+        
+        for (int i = 1; i < amount; i++) {
+            p = new Particle(this.field, new Location(60, 60));
+
+            particles.add(p);
+        }
+   
+
     }
 
     public void reset() {
         step = 0;
         particles.clear();
-        populate();
+        populate(amount);
         // Show the starting state in the view.
         view.showStatus(step, field);
     }
