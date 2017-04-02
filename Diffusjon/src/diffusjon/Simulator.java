@@ -12,19 +12,20 @@ public class Simulator {
     // The default width for the grid.
     private static final int DEFAULT_WIDTH = 120;
     // The default depth of the grid.
-    private static final int DEFAULT_DEPTH = 80;
+    private static final int DEFAULT_DEPTH = 120;
     private ArrayList<Particle> particles;
     // A graphical view of the simulation.
     private SimulatorView view;
     private Particle p;
     private int step;
+    private int dimension;
 
-    public Simulator() {
-        this(DEFAULT_DEPTH, DEFAULT_WIDTH);
+    public Simulator(int dimension) {
+        this(dimension,DEFAULT_DEPTH, DEFAULT_WIDTH);
 
     }
 
-    public Simulator(int width, int depth) {
+    public Simulator(int dimension,int width, int depth) {
         if (width <= 0 || depth <= 0) {
             System.out.println("The dimensions must be greater than zero.");
             System.out.println("Using default values.");
@@ -34,6 +35,7 @@ public class Simulator {
             field = new Field(depth, width);
             view = new SimulatorView(depth, width);
             view.setColor(Particle.class, Color.RED);
+            this.dimension=dimension;
         }
 
         particles = new ArrayList<Particle>();
@@ -48,7 +50,8 @@ public class Simulator {
 
         for (Particle p : particles) {
             field.clear(p.getLocation());
-            p.move1D();
+            p.move(dimension);
+               System.out.println("X: " + p.getLocation().getRow() + "   Y: " + p.getLocation().getCol());
         }
 
         view.showStatus(step, field);

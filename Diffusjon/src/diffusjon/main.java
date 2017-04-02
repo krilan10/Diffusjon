@@ -11,11 +11,16 @@
 package diffusjon;
 
 public class main {
+    
+    //Setter dimensjonen for simulering til 1D
+        static int dimension=2;
+        
+        
        public static void main(String[] args) {
+       
            
            
-           
-        Simulator s=new Simulator();
+        Simulator s=new Simulator(dimension);
         
         
         // Simulerer (antall Steg, Antall dimesjoner)

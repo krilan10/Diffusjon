@@ -75,12 +75,23 @@ public class Location {
 
     public void moveX(boolean moveRight) {
 
-        if (moveRight) {
+        if (moveRight&&getCol()<120) {
             col++;
-            System.out.println(col);
-        } else if (col > 1) {
+          
+        } else if (col > 1&& getCol()>0) {
             col--;
-            System.out.println(col);
+         
+        }
+
+    }
+       public void moveY(boolean moveUp) {
+           
+        if (moveUp &&getRow()<120){
+            row++;
+           
+        } else if (col > 1&&getRow()>0) {
+            row--;
+           
         }
 
     }
