@@ -2,7 +2,8 @@ package diffusjon;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Random;
+import java.io.PrintWriter;
+import java.io.IOException;
 
 public class Simulator {
 
@@ -19,11 +20,14 @@ public class Simulator {
     private Particle p;
     private static int amount;
 
+    ArrayList<LoggInfo> loggInfo;
+
     private int step;
     private int dimension;
 
     public Simulator(int dimension,int amount) {
         this(dimension,amount, DEFAULT_DEPTH, DEFAULT_WIDTH);
+
 
     }
 
@@ -41,6 +45,8 @@ public class Simulator {
             this.amount=amount;
         }
 
+        loggInfo=new ArrayList<>();
+
         particles = new ArrayList<Particle>();
 
         reset();
@@ -53,16 +59,38 @@ public class Simulator {
         for (Particle p : particles) {
             field.clear(p.getLocation());
             p.move(dimension);
-            System.out.println("X: " + p.getLocation().getRow() + "   Y: " + p.getLocation().getCol());
+            //System.out.println("X: " + p.getLocation().getRow() + "   Y: " + p.getLocation().getCol());
+
+            loggInfo.add(new LoggInfo(step,p.getLocation().getRow(),p.getLocation().getCol()));
         }
 
         view.showStatus(step, field);
+    }
+
+
+
+    public void logg(){
+        try{
+            PrintWriter writer = new PrintWriter("Diffusjon.txt", "UTF-8");
+            writer.println("Step\tX\tY");
+            for(LoggInfo l:loggInfo){
+                writer.println(l.getStep() +"\t" + l.getxCoordinate()+"\t"+l.getyCoordinate());
+            }
+            writer.close();
+        }catch (IOException ex){
+
+        }
+
 
     }
+
+
+
 
     public void simulate(int numSteps) {
         for (int step = 1; step <= numSteps; /*&& view.isViable(field);*/ step++) {
             simulateStep();
+
         }
     }
 
@@ -73,13 +101,13 @@ public class Simulator {
 
             particles.add(p);
         }
-   
-
     }
+
 
     public void reset() {
         step = 0;
         particles.clear();
+        loggInfo.clear();
         populate(amount);
         // Show the starting state in the view.
         view.showStatus(step, field);

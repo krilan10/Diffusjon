@@ -34,7 +34,7 @@ public class FieldStats
      * Get details of what is in the field.
      * @return A string describing what is in the field.
      */
-    public String getPopulationDetails(Field field)
+    /*public String getPopulationDetails(Field field)
     {
         StringBuffer buffer = new StringBuffer();
         if(!countsValid) {
@@ -48,7 +48,7 @@ public class FieldStats
             buffer.append(' ');
         }
         return buffer.toString();
-    }
+    }*/
     
     /**
      * Invalidate the current set of statistics; reset all 

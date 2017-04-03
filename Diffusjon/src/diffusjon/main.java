@@ -18,7 +18,7 @@ public class main {
     
         static int dimension=2;
         static int steps=1000;
-        static int amountOfParticles=3000;
+        static int amountOfParticles=300;
         
         
        public static void main(String[] args) {
@@ -26,10 +26,12 @@ public class main {
            
            
         Simulator s=new Simulator(dimension,amountOfParticles);
+
         
         
         // Simulerer (antall Steg, Antall dimesjoner)
         // NB! bare implementert 1D og 2D
         s.simulate(steps);
+        s.logg();
     }
 }

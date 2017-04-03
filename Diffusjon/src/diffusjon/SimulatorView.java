@@ -43,11 +43,11 @@ public class SimulatorView extends JFrame {
         stats = new FieldStats();
         colors = new LinkedHashMap<Class, Color>();
 
-        setTitle("Fox and Rabbit Simulation");
+        setTitle("Diffusjon simulator");
         stepLabel = new JLabel(STEP_PREFIX, JLabel.CENTER);
         population = new JLabel(POPULATION_PREFIX, JLabel.CENTER);
 
-        setLocation(100, 50);
+        setLocation(150, 150);
 
         fieldView = new FieldView(height, width);
 
@@ -113,7 +113,7 @@ public class SimulatorView extends JFrame {
         }
         stats.countFinished();
 
-        population.setText(POPULATION_PREFIX + stats.getPopulationDetails(field));
+        //population.setText(POPULATION_PREFIX + stats.getPopulationDetails(field));
         fieldView.repaint();
     }
 
