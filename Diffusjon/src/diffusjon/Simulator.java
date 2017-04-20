@@ -22,6 +22,8 @@ public class Simulator {
 
     ArrayList<LoggInfo> loggInfo;
 
+
+
     private int step;
     private int dimension;
 
@@ -61,11 +63,14 @@ public class Simulator {
             p.move(dimension);
             //System.out.println("X: " + p.getLocation().getRow() + "   Y: " + p.getLocation().getCol());
 
+
+
             loggInfo.add(new LoggInfo(step,p.getLocation().getRow(),p.getLocation().getCol()));
         }
 
         view.showStatus(step, field);
     }
+
 
 
 
@@ -80,8 +85,6 @@ public class Simulator {
         }catch (IOException ex){
 
         }
-
-
     }
 
 

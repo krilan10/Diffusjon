@@ -11,14 +11,17 @@ package diffusjon;
  */
 
 public class LoggInfo {
-    int step;
-    int xCoordinate;
-    int yCoordinate;
+    private int step;
+    private int xCoordinate;
+    private int yCoordinate;
+
 
     public LoggInfo(int step, int xCoordinate, int yCoordinate) {
         this.step = step;
         this.xCoordinate = xCoordinate;
         this.yCoordinate = yCoordinate;
+
+
     }
 
     public int getStep() {
@@ -44,4 +47,7 @@ public class LoggInfo {
     public void setyCoordinate(int yCoordinate) {
         this.yCoordinate = yCoordinate;
     }
+
+
+
 }
